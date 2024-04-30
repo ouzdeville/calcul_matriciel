@@ -37,3 +37,7 @@ void affiche(rmat A){
     
 
 }
+int inverse(rmat A, rmat invA){
+
+    
+}
