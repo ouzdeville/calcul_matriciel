@@ -16,7 +16,7 @@ rmat init(int ligne, int colonne){
     mat.coeff=(float **) malloc(mat.rown *sizeof(float *));
     for ( i = 0; i < mat.rown; i++)
     {
-        // chaque est un tableau de réel
+        // chaque ligne est un tableau de réel
         mat.coeff[i]= calloc(mat.coln, sizeof(float));
     }
 
