@@ -17,6 +17,8 @@
              *./Matrix.exe -add -l 3 -n 4* pour la addition de matrices
    
              *./Matrix.exe -tr -l 3 -n 4* pour la trace
+
+             "test"
          
 
     
