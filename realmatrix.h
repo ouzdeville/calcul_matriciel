@@ -1,7 +1,8 @@
 #ifndef _RMATRIX_H
 #define _RMATRIX_H
 
-typedef struct Matrix {
+typedef struct Matrix 
+{
 	unsigned int rown;
 	unsigned int coln;
 	float **coeff;
