@@ -32,12 +32,66 @@ void affiche(rmat A){
             printf("%0.2f \t", A.coeff[i][j]);
         }
         printf("\n");
-        
     }
-    
-
 }
+
+
 int inverse(rmat A, rmat invA){
 
     
+}
+
+rmat init_Id(int ordre)
+{
+    rmat Id=init(ordre,ordre);
+    for (int i = 0; i < ordre; i++)
+    {
+        Id.coeff[i][i]=1;
+    }
+    return Id;
+}
+
+rmat mult(rmat A, rmat B)
+{
+    
+    rmat mat = init(B.rown, B.coln);
+    for (int i = 0; i < A.rown; i++)
+    {
+        for (int j = 0; j < B.rown; j++)
+        {
+            float som=0;
+            for (int k = 0; k < B.coln; k++)
+            {
+                som = som + A.coeff[i][k] * B.coeff[k][j];
+            }
+            mat.coeff[i][j]=som;
+        }
+    }
+    return mat;
+}
+
+rmat add(rmat A, rmat B)
+{
+    rmat mat = init(B.rown, B.coln);
+    for (int i = 0; i < A.rown; i++)
+    {
+        for (int j = 0; j < B.rown; j++)
+        {
+            mat.coeff[i][j]= A.coeff[i][j]  + B.coeff[i][j];
+        }
+    }
+    return mat;
+}
+
+rmat transposition(rmat A)
+{
+    rmat mat = init(A.coln, A.rown);
+    for (int i = 0; i < mat.rown; i++)
+    {
+        for (int j = 0; j < mat.coln; j++)
+        {
+            mat.coeff[i][j]=A.coeff[j][i];
+        }
+    }
+    return mat;
 }
