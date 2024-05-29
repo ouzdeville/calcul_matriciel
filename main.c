@@ -9,7 +9,7 @@ int main()
     int ordre;
     int ligne, colonne;
 
-    //Insertion du nmbre de colonnes et de lignes
+    // Insertion du nmbre de colonnes et de lignes
     printf("Donner le nmbre de lignes:\n");
     scanf("%d",&ligne);
     printf("Donner le nmbre de colonnes:\n");
@@ -17,7 +17,12 @@ int main()
 
     rmat M=init(ligne,colonne);
     rmat N=init(ligne,colonne);
+    rmat trans = init(colonne, ligne);
     rmat A=init(ligne,colonne);
+    rmat invA=init(ligne, colonne);
+
+    remplirMat(M);
+    affiche(M);
 
     printf("Quel type d'operation voulez vous faire?\n - 1 entre deux matrice \n - 2 sur une matrice.\n");
     do
@@ -29,73 +34,77 @@ int main()
         {
             printf("Le choix est entre 1 et 2.\n");
         }
-        
     } while (type != 1 && type !=  2);
 
     if (type == 1)
     {
-        printf("Remplissage de M1:\n");
-        for (int i = 0; i < M.rown; i++)
-        {
-            for (int j = 0; j < M.coln; j++)
-            {
-                printf("Entrez le coefficient %d%d de votre premiere matrice:", i,j);
-                scanf("%f", &M.coeff[i][j]);
-            }
-        }
+        remplirMat(M);
 
-        printf("Remplissage de M2:\n");
-        for (int i = 0; i < N.rown; i++)
-        {
-            for (int j = 0; j < N.coln; j++)
-            {
-                printf("Entrez le coefficient %d%d de votre premiere matrice:", i,j);
-                scanf("%f", &N.coeff[i][j]);
-            }
-        }
+        remplirMat(N);
 
-        if (M.rown==M.coln)
+        if (M.rown==N.coln)
         {
             A=mult(M,N);
             printf("Le resultat de la mult est:\n");
             affiche(A);
-            A=add(M,N);
-            printf("Le resultat de l'add est:\n");
-            affiche(A);
+            if (M.coln==N.coln)
+            {
+                A=add(M,N);
+                printf("Le resultat de l'add est:\n");
+                affiche(A);
+            }
         }
         else
         {
-            printf("Le resultat de l'add est:\n");
-            A = add(M,N);
-            affiche(A);
+            printf("Pour une multiplication, il faut un nombre de colonne et de lign egal entre les deux matrice.\n");
         }
     }
     else if (type==2)
     {
-        for (int i = 0; i < M.rown; i++)
-        {
-            for (int j = 0; j < M.coln; j++)
-            {
-                printf("Entrez le coefficient %d%d de votre premiere matrice:", i,j);
-                scanf("%f", &M.coeff[i][j]);
-            }
-        }
+        remplirMat(M);
 
         if (M.coln==M.rown)
         {
-        printf("La matrice Identite de votre matrice est:\n");
-        A=init_Id(M.coln);
-        affiche(A);
+            printf("La matrice Identite de votre matrice est:\n");
+            A=init_Id(M.coln);
+            affiche(A);
+            printf("\n");
+
+            float determinant = det(M);
+            printf("Le determinant de votre Matrice est: %f \n.", determinant); 
+
+            printf("\n");
+
+            printf("\n La matrice echelonne de votre matrice est:\n");
+            A=pivot(M);
+            affiche(A);
+
+            type=trace(M);
+            printf("La trace de ta Matricule est: %d.\n", type);
+
+            printf("\n");
+
+        }
+        else
+        {
+            printf("Desole, votre matrice n'est pas carree.\n");
         }
 
-        M=transposition(M);
+        trans=transposition(M);
         printf("Le resultat de la transposition est:\n");
-        affiche(M);
+        affiche(trans);
 
-        // type=trace(M);
-        // printf("La trace de ta Matricule est: %d.\n", type);
+        
+
+        printf("\n");
+        printf("L'inverse de votre matrice s'il existe est:\n");
+
+        inverse(M,invA);
     }
 
-
-    return 1;
+    freeMatrix(M);
+    freeMatrix(N);
+    freeMatrix(A);
+    freeMatrix(invA);
+    return 0;
 }
