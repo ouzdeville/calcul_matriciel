@@ -37,6 +37,33 @@ void affiche(rmat A){
     
 
 }
+// Fonction pour additionner deux matrices
+rmat add(const rmat A, const rmat B) {
+    rmat C = init(A.rown, A.coln);
+    for (int i = 0; i < A.rown; i++) {
+        for (int j = 0; j < A.coln; j++) {
+            C.coeff[i][j] = A.coeff[i][j] + B.coeff[i][j];
+        }
+    }
+    return C;
+}
+
+// Fonction pour multiplier deux matrices
+rmat mult(const rmat A, const rmat B) {
+    rmat C = init(A.rown, B.coln);
+    for (int i = 0; i < C.rown; i++) {
+        for (int j = 0; j < C.coln; j++) {
+            for (int k = 0; k < A.coln; k++) {
+                C.coeff[i][j] += A.coeff[i][k] * B.coeff[k][j];
+            }
+        }
+    }
+    return C;
+}
+
+
+
+
 // int inverse(rmat A, rmat invA){
 
     
