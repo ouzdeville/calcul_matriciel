@@ -21,8 +21,6 @@ int main()
     rmat A=init(ligne,colonne);
     rmat invA=init(ligne, colonne);
 
-    remplirMat(M);
-    affiche(M);
 
     printf("Quel type d'operation voulez vous faire?\n - 1 entre deux matrice \n - 2 sur une matrice.\n");
     do
@@ -71,7 +69,7 @@ int main()
             printf("\n");
 
             float determinant = det(M);
-            printf("Le determinant de votre Matrice est: %f \n.", determinant); 
+            printf("Le determinant de votre Matrice est: %f . \n", determinant); 
 
             printf("\n");
 
@@ -79,8 +77,14 @@ int main()
             A=pivot(M);
             affiche(A);
 
-            type=trace(M);
-            printf("La trace de ta Matricule est: %d.\n", type);
+            printf("\n");
+            int r = rang(A);
+            printf("Le rang de votre matrice est: %d\n",r);
+
+            // printf("\n");
+
+            // type=trace(M);
+            // printf("La trace de ta Matricule est: %d.\n", type);
 
             printf("\n");
 

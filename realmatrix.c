@@ -280,9 +280,22 @@ int rang(rmat A)
     int r=0;
     for (int i = 0; i < A.rown; i++)
     {
-        if (A.coeff[i][i]!=0)
+        float som = 0;
+        for (int j = 0; j < A.coln; j++)
         {
-            r++;
+            if(A.coeff[A.rown-i-1][j]<0)
+            {
+                som = som - A.coeff[A.rown-i-1][j];
+            }
+            else
+            {
+                som = som + A.coeff[A.rown-i-1][j];
+            }
+        }
+
+        if (som != 0)
+        {
+            r = r + 1;
         }
     }
     return r;
