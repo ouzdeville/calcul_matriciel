@@ -6,7 +6,7 @@
 
 int main()
 {
-    rmat A,B,C;
+    rmat A,B,C,T;
     A=init(2,2);
     B=init(2,2);
     int i,j;
@@ -20,6 +20,8 @@ int main()
         }
         
     }
+
+   
    
     printf("A=\n");
     affiche(A);
@@ -29,7 +31,22 @@ int main()
     C=mult(A,B);
     printf("C=\n");
     affiche(C);
+
+
+     T = transposition(A);
+    printf("Transpose de A=\n");
+    affiche(T);
     
     
+
+    float determinant = det(A);
+    printf("Determinant de A = %0.2f\n", determinant);
+
+    rmat P = pivot(A);
+    printf("Matrice en forme échelonnée =\n");
+    affiche(P);
+
+   int M = rang(A);
+    printf("Rang de A = %d\n", M);
     return 1;
 }
