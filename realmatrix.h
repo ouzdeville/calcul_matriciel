@@ -1,5 +1,5 @@
-#ifndef _RMATRIX_H
-#define _RMATRIX_H
+#ifndef MATRIX_H
+#define MATRIX_H
 
 typedef struct Matrix 
 {
@@ -7,6 +7,7 @@ typedef struct Matrix
 	unsigned int coln;
 	float **coeff;
 } rmat;
+
 
 void affiche(rmat A);
 rmat init(int ligne, int colonne);
@@ -16,9 +17,8 @@ rmat mult(rmat A, rmat B);
 rmat transposition(rmat A);
 int inverse(rmat A, rmat invA);
 float det(rmat A);
-float trace(rmat A);
 rmat pivot(rmat A);
 int rang(rmat A);
-float* valeurPropre(rmat A);
-int dimEspacePropre(rmat A, float lamda);
+void free_matrix(rmat A);
+
 #endif

@@ -12,11 +12,11 @@
 4. Modifiez le main.c pour accepter des commandes et des options
 5. 
      Exemples:
-             *./Matrix.exe -mult -l 3 -n 4 -m 5* pour la mutiplication de matrices
+            *./Matrix.exe -mult -l 3 -n 4 -m 5* pour la mutiplication de matrices
    
-             *./Matrix.exe -add -l 3 -n 4* pour la addition de matrices
+            *./Matrix.exe -add -l 3 -n 4* pour la addition de matrices
    
-             *./Matrix.exe -tr -l 3 -n 4* pour la trace
+            *./Matrix.exe -tr -l 3 -n 4* pour la trace
          
 
     
