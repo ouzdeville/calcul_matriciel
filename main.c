@@ -98,8 +98,6 @@ int main()
         printf("Le resultat de la transposition est:\n");
         affiche(trans);
 
-        
-
         printf("\n");
         printf("L'inverse de votre matrice s'il existe est:\n");
 

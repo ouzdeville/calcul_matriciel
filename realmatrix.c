@@ -123,29 +123,29 @@ rmat getMinor(rmat matrix, int row, int col)
     return minor;
 }
 
-float det(rmat matrix) 
+float det(rmat A) 
 {
-    if (matrix.rown != matrix.coln) {
+    if (A.rown != A.coln) {
         printf("Le determinant n'est defini que pour les matrices carrees.\n");
         exit(EXIT_FAILURE);
     }
 
-    if (matrix.rown == 1) {
-        return matrix.coeff[0][0];
-    } else if (matrix.rown == 2) {
-        return matrix.coeff[0][0] * matrix.coeff[1][1] - matrix.coeff[0][1] * matrix.coeff[1][0];
+    if (A.rown == 1) {
+        return A.coeff[0][0];
+    } else if (A.rown == 2) {
+        return A.coeff[0][0] * A.coeff[1][1] - A.coeff[0][1] * A.coeff[1][0];
     }
 
     float determinant = 0.0;
-    for (int j = 0; j < matrix.coln; j++) {
-        rmat minor = getMinor(matrix, 0, j);
-        determinant += ((j % 2 == 0) ? 1 : -1) * matrix.coeff[0][j] * det(minor);
+    for (int j = 0; j < A.coln; j++) {
+        rmat minor = getMinor(A, 0, j);
+        determinant += ((j % 2 == 0) ? 1 : -1) * A.coeff[0][j] * det(minor);
         freeMatrix(minor);
     }
     return determinant;
 }
 
-void echLigne(rmat A, int row1, int row2, int coln) {
+voidechLigne(rmat A, int row1, int row2, int coln) {
     for (int j = 0; j < coln; j++)
     {
         float temp = A.coeff[row1][j];
