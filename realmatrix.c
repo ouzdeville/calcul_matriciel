@@ -50,39 +50,3 @@ void affiche(rmat A){
 
 }
 
-rmat add(rmat A, rmat B){
-    rmat C=init(A.rown,A.coln);
-    int i=0, j=0;
-    for ( i = 0; i < A.rown; i++)
-    {
-        for ( j = 0; j < A.coln; j++)
-        {
-            C.coeff[i][j]= A.coeff[i][j]+ B.coeff[i][j];
-        }
-        
-    }
-    
-    return C;
-}
-
-
-rmat mult(rmat A, rmat B){
-    rmat C=init(A.rown,B.coln);
-    int i=0, j=0,k;
-    for ( i = 0; i < C.rown; i++)
-    {
-        for ( j = 0; j < C.coln; j++)
-        {
-            for ( k = 0; k < A.coln; k++)
-            {
-                C.coeff[i][j]+= A.coeff[i][k]* B.coeff[k][j];
-            }
-            
-            
-        }
-        
-    }
-    
-    return C;
-
-}
