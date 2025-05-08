@@ -15,8 +15,8 @@ int main()
     {
         for ( j = 0; j < A.coln; j++)
         {
-            A.coeff[i][j]=((int)rand())%2;
-            B.coeff[i][j]=((int)rand())%2;
+            A.coeff[i][j]=((int)rand())%6;
+            B.coeff[i][j]=((int)rand())%6;
         }
         
     }
@@ -26,10 +26,28 @@ int main()
     printf("B=\n");
     affiche(B);
 
+    //appel fonction addition 
+    C=add(A,B);
+    printf("C=\n");
+    affiche(C);
+//appel fonction multiplication
     C=mult(A,B);
     printf("C=\n");
     affiche(C);
+    //appelle de la fonction transposé
+rmat At = transposition(A);
+affiche(At);
+
+int inverse(rmat A, rmat invA);
+rmat invA = init(A.rown, A.coln); // ==> déclare et initialise invA !
+
+if (inverse(A, invA)) {
+    printf("Matrice inverse :\n");
+    affiche(invA);
+} else {
+    printf("Inversion impossible.\n");
+}
+    float determinant = det(A);
+    printf("Le déterminant de A est : %.2f\n", determinant);
     
-    
-    return 1;
 }
