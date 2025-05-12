@@ -4,9 +4,11 @@
 #include "realmatrix.h"
 
 
+
+
 int main()
 {
-    rmat A,B,C;
+    rmat A,B,C,invA;
     A=init(2,2);
     B=init(2,2);
     int i,j;
@@ -26,10 +28,21 @@ int main()
     printf("B=\n");
     affiche(B);
 
+  /* C=add(A,B);
+    printf("C=\n");
+    affiche(C);
+
     C=mult(A,B);
     printf("C=\n");
     affiche(C);
+
+    C=transposition(A);
+    printf("T=\n");
+    affiche(T);*/
+
+    invA=inverse(A);
+    printf("invA=\n");
+    affiche(invA);
     
-    
-    return 1;
+   return 1;
 }
