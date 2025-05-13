@@ -1,4 +1,4 @@
-# Project: shrivastava
+# Project: L2TDSI
 # Makefile created by ouzdeville
 CC       = gcc
 OBJ      = realmatrix.o main.o
@@ -6,8 +6,7 @@ LINKOBJ  = realmatrix.o main.o
 #LIBS     = -L/usr/lib -lssl -lcrypto
 INCS     = 
 CXXINCS  = 
-BIN      = Matrix.exe
-
+BIN      = Matrix
 LFLAGS=
 CFLAGS= -c -Wall -I. 
 RM       = rm -f
