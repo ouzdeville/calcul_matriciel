@@ -6,7 +6,7 @@
 
 int main()
 {
-    rmat A,B,C;
+    rmat A,B,C,M,T;
     A=init(2,2);
     B=init(2,2);
     int i,j;
@@ -26,9 +26,17 @@ int main()
     printf("B=\n");
     affiche(B);
 
-    C=mult(A,B);
-    printf("C=\n");
+    C=add(A,B);
+    printf("C= A+B\n");
     affiche(C);
+
+    M=mult(A,B);
+    printf("M= A*B\n");
+    affiche(M);
+
+    T=transposition(A);
+    printf("T la transposition de A\n");
+    affiche(T);
     
     
     return 1;

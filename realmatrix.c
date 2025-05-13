@@ -45,8 +45,82 @@ void affiche(rmat A){
         }
         printf("\n");
         
+    }}
+    rmat add(rmat A, rmat B){
+        int i,j;
+        rmat C=init(A.rown,B.coln);
+      
+    if(A.coln!=B.coln || A.rown!=B.rown){
+    printf("la somme des matrices A et B n'est pas definie ");}
+    else{
+        for(i=0;i<A.rown;i++){
+            for(j=0;j<A.coln;j++){
+                C.coeff[i][j]=A.coeff[i][j]+B.coeff[i][j];
+                
+            }
+
+
+        }
+    
+
+
+    }
+    return C;
+    }
+    rmat mult(rmat A, rmat B){
+        rmat M=init(A.rown,B.coln);
+        int i,j,k;
+        float P=0;
+
+
+        for ( i = 0; i < A.rown; i++)
+        {
+            for (j= 0; j< B.coln; j++)
+            {
+    for ( k = 0; k< A.coln; k++)
+    {
+        
+        P=P+(A.coeff[i][k]*B.coeff[k][j]);
+    }
+    M.coeff[i][j]=P;
+    P=0;
+    
+
+            }
+            
+        }
+        return M;
+        
+
+
+    }
+    rmat transposition(rmat A){
+        int i,j;
+        rmat T=init(A.coln,A.rown);
+        for(i=0;i<A.rown;i++){
+            for(j=0;j<A.coln;j++){
+                T.coeff[j][i]=A.coeff[i][j];
+            }
+        }
+        return T;
+
+
+
     }
     
 
-}
+
+
+
+
+
+
+
+
+
+
+
+    
+
+
 
