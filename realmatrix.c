@@ -160,3 +160,14 @@ int inverse(rmat A, rmat *invA){
     printf("L'inverse de A vaut: \n"); 
     return 1;                                                                     
 }
+float det(rmat A){
+
+    if (A.rown != A.coln) {
+        printf("Le déterminant n'est défini que pour les matrices carrées.\n");
+        return 0;
+    }
+    float D = A.coeff[0][0] * A.coeff[1][1] - A.coeff[0][1] * A.coeff[1][0];
+    printf("Le déterminant de A vaut: \n"); 
+    return 0;
+
+}

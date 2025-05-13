@@ -37,14 +37,19 @@ int main()
     T=transposition(A);
     printf("T=\n");
     affiche(T);
+    
     A.coeff[0][0] = 1;
-A.coeff[0][1] = 2;
-A.coeff[1][0] = 3;
-A.coeff[1][1] = 4;
+    A.coeff[0][1] = 2;
+    A.coeff[1][0] = 3;
+    A.coeff[1][1] = 4;
 
     inverse(A, &invA);
     printf("invA =\n");
     affiche(invA);
+
+    float D = det(A);
+    printf("D= %.2f\n", D);
+
 
     return 1;
 }
