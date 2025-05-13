@@ -26,10 +26,30 @@ int main()
     printf("B=\n");
     affiche(B);
 
-    C=mult(A,B);
-    printf("C=\n");
+    // Test addition
+    rmat C = add(A, B);
+    printf("A + B:\n");
     affiche(C);
+    free_matrix(C);
     
+    // Test multiplication
+    rmat D = mult(A, B);
+    printf("A × B:\n");
+    affiche(D);
+    free_matrix(D);
     
-    return 1;
+    // Test transposée
+    rmat T = transposition(A);
+    printf("Transposée de A:\n");
+    affiche(T);
+    free_matrix(T);
+    
+    // Test trace
+    printf("Trace de A: %.2f\n", trace(A));
+    
+    free_matrix(A);
+    free_matrix(B);
 }
+
+    return 0;
+    
