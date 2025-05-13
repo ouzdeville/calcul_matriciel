@@ -6,7 +6,7 @@
 
 int main()
 {
-    rmat A,B,C,P,T;
+    rmat A,B,C,P,T,invA;
     A=init(2,2);
     B=init(2,2);
     int i,j;
@@ -37,7 +37,14 @@ int main()
     T=transposition(A);
     printf("T=\n");
     affiche(T);
-    
-    
+    A.coeff[0][0] = 1;
+A.coeff[0][1] = 2;
+A.coeff[1][0] = 3;
+A.coeff[1][1] = 4;
+
+    inverse(A, &invA);
+    printf("invA =\n");
+    affiche(invA);
+
     return 1;
 }

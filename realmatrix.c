@@ -132,35 +132,31 @@ rmat transposition(rmat A){
     printf("La transposition de A vaut : \n");
     return T;
 }
-int inverse(rmat A, rmat invA){
-    int det,i,j;
-
-    for (i = 0; i < A.rown; i++) {
-        for (j = 0; j < A.coln; j++) {
-          det   = (A.coeff[i][j] * A.coeff[i+1][j+1]) - (A.coeff[i][j+1] * A.coeff[i+1][j]);
-        }
+int inverse(rmat A, rmat *invA){
+    int i;
+     
+    if (A.rown != 2 || A.coln != 2) {
+        printf("Seules les matrices 2x2 peuvent être inversées dans cette fonction.\n");
+        return 0; // Retourne 0 si la matrice n'est pas 2x2
     }
-    invA.rown = A.coln;
-    invA.coln = A.rown;
-    invA.coeff = (float **)malloc(invA.rown * sizeof(float *));
+    // Calcul du déterminant pour une matrice 2x2
+    float det = A.coeff[0][0] * A.coeff[1][1] - A.coeff[0][1] * A.coeff[1][0];
+
+    invA->rown = A.coln;
+    invA->coln = A.rown;
+    invA->coeff = (float **)malloc(invA->rown * sizeof(float *));
     
-    for (i = 0; i < invA.rown; i++) {
-        invA.coeff[i] = (float *)malloc(invA.coln * sizeof(float));
+    for (i = 0; i < invA->rown; i++) {
+        invA->coeff[i] = (float *)malloc(invA->coln * sizeof(float));
     }
     if( det == 0 ){
         printf("A ne possede pas d'inverse");
-    }else{  
-        // inverse d'une matrices
-        printf("A possede un inverse");
-        for (i = 0; i < A.rown; i++) {
-            for (j = 0; j < A.coln; j++) {
-              invA = (1/det)*(A.coeff[i+1][j+1]);
-            }
-        } 
+    }
 
-    }  
-    
-
-
-
+    invA->coeff[0][0] = A.coeff[1][1] / det;
+    invA->coeff[0][1] = -A.coeff[0][1] / det;
+    invA->coeff[1][0] = -A.coeff[1][0] / det;
+    invA->coeff[1][1] = A.coeff[0][0] / det;    
+    printf("L'inverse de A vaut: \n"); 
+    return 1;                                                                     
 }
