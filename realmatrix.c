@@ -52,7 +52,7 @@ void affiche(rmat A){
 }
 rmat add(rmat A, rmat B) {
     if (A.rown != B.rown || A.coln != B.coln) {
-        fprintf(stderr, "Il ya une erreur car les matrices sont de dimensions différentes\n");
+        printf( "impossible avec des matrice taille differente\n");
         exit(1);
     }
 
@@ -67,7 +67,7 @@ rmat add(rmat A, rmat B) {
 }
 rmat mult(rmat A, rmat B) {
     if (A.coln != B.rown) {
-        fprintf(stderr, "la multiplication est impossible car le nmbr de ligne de A est different du nmbr de colone de B \n");
+        printf( "la multiplication est impossible car le nmbr de ligne de A est different du nmbr de colone de B \n");
         exit(EXIT_FAILURE);
     }
 
@@ -80,7 +80,7 @@ rmat mult(rmat A, rmat B) {
             }
         }
     }
-    printf("la multiplication est :\n");
+    printf("la multiplication est de A et B est egale à :\n");
     
 
 
@@ -95,7 +95,7 @@ rmat transposition(rmat A) {
             At.coeff[j][i] = A.coeff[i][j];
         }
     }
-    printf("la transposé de la matrice est:\n");
+    printf("la transposé de la matrice A est:\n");
     return At;
 }
 
@@ -103,7 +103,7 @@ rmat transposition(rmat A) {
 
 float det(rmat A) {
     if (A.rown != A.coln) {
-        fprintf(stderr, "Matrice non carrée\n");
+        printf("Matrice non carrée\n");
         exit(EXIT_FAILURE);
     }
 
@@ -114,8 +114,7 @@ float det(rmat A) {
     int sign = 1;
 
     for (int f = 0; f < n; f++) {
-        // Créer la sous-matrice en ligne dans une boucle
-        rmat temp = init(n - 1, n - 1);
+        rmat temp = init(n - 1, n - 1); // Créer la sous-matrice en ligne dans une boucle
         for (int i = 1; i < n; i++) {
             int col_idx = 0;
             for (int j = 0; j < n; j++) {
@@ -136,14 +135,14 @@ float det(rmat A) {
  
 int inverse(rmat A, rmat invA) {
     if (A.rown != A.coln) {
-        fprintf(stderr, "La matrice n'est pas carrée, pas d'inverse possible.\n");
+        printf( "La matrice n'est pas carrée, pas d'inverse possible essaie encore une fois.\n");
         return 0;
     }
 
     int n = A.rown;
     float determinant = det(A);
     if (determinant == 0.0f) {
-        fprintf(stderr, "Matrice singulière, déterminant nul, pas d'inverse.\n");
+        printf( "Matrice singulière, déterminant nul, pas d'inverse.\n");
         return 0;
     }
 
