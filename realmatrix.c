@@ -46,7 +46,59 @@ void affiche(rmat A){
         printf("\n");
         
     }
+
     
+    rmat add(rmat A, rmat B){
+        if(A.rown !=B.rown || A.coln != B.coln)
+        {
+            printf("\n Addition impossible\n");
+            exit(-1);
+        }   
+        rmat C = init(A.rown,A.coln);
+        for (int i = 0; i <A.rown; i++)
+        {
+            for (int j = 0; j < A.coln; j++){
+                C.coeff[i][j] = A.coeff[i][j] + B.coeff[i][j];
+            }
+
+        } 
+        return C;
+        
+    }
+
+
+
+
+rmat mult(rmat A, rmat B);{
+    if(A.rown != B.rown )
+        {
+            printf("\n Multiplication impossible\n");
+            exit(-1);
+        }  
+        rmat C = init(A.rown,B.coln);
+        for (int i = 0; i < A.coln; i++)
+         {
+            for (int j = 0; j < B.coln; j++){
+                for (int k = 0;k < A.coln; k++){
+                    C.coeff[i][j] = A.coeff[i][k] * B.coeff[k][j];
+                    
+                }
+            }
+            return C;
+
+         }
+        
 
 }
 
+
+
+rmat transposition(rmat A);{
+    rmat C = init(A.coln,A.rown);
+    for (int i = 0; i < A.rown; i++){
+        for(int j = 0; j < A.coln; j++){
+            C.coeff[j][i] = A.coeff[i][j];
+        }
+    }
+    return C;
+}
