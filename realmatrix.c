@@ -50,3 +50,14 @@ void affiche(rmat A){
 
 }
 
+// Transposition
+
+rmat transposition(rmat A){
+    rmat T = init(A.coln,A.rown);   
+    for(int i = 0; i < A.rown; i++ ){
+        for(int j = 0; j < A.coln; j++ ){
+            T.coeff[i][j] = A.coeff[i][j];
+        }
+    }   
+}   
+return T;

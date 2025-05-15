@@ -25,11 +25,11 @@ int main()
     affiche(A);
     printf("B=\n");
     affiche(B);
-
-    C=mult(A,B);
-    printf("C=\n");
-    affiche(C);
     
+    
+    /*C=mult(A,B);
+    printf("C=\n");
+    affiche(C);*/
     
     return 1;
 }
